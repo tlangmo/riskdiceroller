@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RiskDice</string>
+    <string name="speech_red_dice">Red Dice</string>
+    <string name="speech_blue_dice">Blue Dice</string>
+    <string name="desc_read_values">Toggle read aloud</string>
+    <string name="desc_defend_dice_1">Blue Dice 1</string>
+    <string name="desc_defend_dice_2">Blue Dice 2</string>
+    <string name="desc_roll_dice">Roll</string>
+    <string name="roll_dice">Roll</string>
+    <string name="desc_attack_dice_3">Red Dice 3</string>
+    <string name="desc_attack_dice_2">Red Dice 2</string>
+    <string name="desc_attack_dice_1">Red Dice 1</string>
+</resources>

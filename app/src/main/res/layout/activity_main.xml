@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue_bg"
+    android:fillViewport="true"
+>
+    <ImageView
+        android:id="@+id/image_view_read_aloud"
+        android:contentDescription="@string/desc_read_values"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:alpha="1"
+        android:src="@drawable/baseline_volume_off_24"/>
+    <ImageView
+        android:id="@+id/image_view_robot"
+        android:layout_width="400dp"
+        android:layout_height="460dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.2"
+        android:scaleType="centerCrop"
+        android:src="@drawable/robot" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="top">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layout_attack_dice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:contentDescription="@string/desc_attack_dice_1"
+                    android:id="@+id/image_view_attack_0"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dice_comic_red_blank"/>
+
+                <ImageView
+                    android:contentDescription="@string/desc_attack_dice_2"
+                    android:id="@+id/image_view_attack_1"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dice_comic_red_blank" />
+
+                <ImageView
+                    android:contentDescription="@string/desc_attack_dice_3"
+                    android:id="@+id/image_view_attack_2"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dice_comic_red_blank" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layout_defend_dice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_attack_dice"
+                android:layout_marginTop="80dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:contentDescription="@string/desc_defend_dice_1"
+                    android:id="@+id/image_view_defend_0"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dice_comic_blue_blank" />
+
+                <ImageView
+                    android:contentDescription="@string/desc_attack_dice_2"
+                    android:id="@+id/image_view_defend_1"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/dice_comic_blue_blank" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_roll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_defend_dice"
+                android:layout_marginTop="120dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:contentDescription="@string/desc_roll_dice"
+                    android:id="@+id/button_roll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/roll_dice"
+                    android:textColor="@color/overlay"
+                    android:textSize="50sp"
+                    app:cornerRadius="10dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

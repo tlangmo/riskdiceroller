@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Risiko Würfel</string>
+    <string name="speech_red_dice">Rote Würfel</string>
+    <string name="speech_blue_dice">Blaue Würfel</string>
+    <string name="desc_read_values">Umschalten Tonausgabe</string>
+    <string name="desc_defend_dice_1">Blauer Würfel 1</string>
+    <string name="desc_defend_dice_2">Blauer Würfel 2</string>
+    <string name="desc_roll_dice">Werfen</string>
+    <string name="roll_dice">Werfen</string>
+    <string name="desc_attack_dice_3">Roter Würfel 3</string>
+    <string name="desc_attack_dice_2">Roter Würfel 2</string>
+    <string name="desc_attack_dice_1">Roter Würfel 1</string>
+</resources>
