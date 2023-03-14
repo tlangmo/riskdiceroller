@@ -47,7 +47,9 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
     fun rollClickHander() {
-        var current: Locale = getResources().getConfiguration().getLocales().get(0)
+        val current: Locale = getResources().getConfiguration().getLocales().get(0)
+        // reset any ongoing speech
+        tts.speak("", TextToSpeech.QUEUE_FLUSH, null,"")
         tts.setLanguage(current)
         if (readAloud) tts.speak(getString(R.string.speech_red_dice), TextToSpeech.QUEUE_ADD, null,"")
         for (i in 0..attackDiceUsed.size - 1) {
