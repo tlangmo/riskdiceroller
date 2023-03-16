@@ -31,18 +31,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3"/>
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/layout_attack_dice"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="@+id/guideline"
+                android:layout_marginTop="48dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -74,11 +84,13 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/layout_defend_dice"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/layout_attack_dice"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="@+id/guideline"
                 android:layout_below="@+id/layout_attack_dice"
                 android:layout_marginTop="80dp"
-                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -100,28 +112,25 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linear_roll"
-                android:layout_width="match_parent"
+
+
+            <com.google.android.material.button.MaterialButton
+                android:contentDescription="@string/desc_roll_dice"
+                android:id="@+id/button_roll"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_defend_dice"
-                android:layout_marginTop="120dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <com.google.android.material.button.MaterialButton
-                    android:contentDescription="@string/desc_roll_dice"
-                    android:id="@+id/button_roll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/roll_dice"
-                    android:textColor="@color/overlay"
-                    android:textSize="50sp"
-                    app:cornerRadius="10dp" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                app:layout_constraintLeft_toRightOf="@+id/layout_attack_dice"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/roll_dice"
+                android:textColor="@color/overlay"
+                android:textSize="50sp"
+                app:cornerRadius="10dp" />
 
 
-        </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
