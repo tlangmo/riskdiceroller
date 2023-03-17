@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var settingsButton : ImageView? = null
     val RollDelayMax: Int = 1000
     val RollDelayMin: Int = 200
+
     private lateinit var binding : ActivityMainBinding
     private lateinit var tts: TextToSpeech
     private var readAloud = false
@@ -68,11 +69,49 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
     }
+
+    override fun onSaveInstanceState(outState:Bundle ){
+        super.onSaveInstanceState(outState)
+        val usedDice = IntArray(5) {_ -> 0}
+        usedDice[0] = if (attackDiceUsed[0]) 1 else 0
+        usedDice[1] = if (attackDiceUsed[1]) 1 else 0
+        usedDice[2] = if (attackDiceUsed[2]) 1 else 0
+        usedDice[3] = if (defendDiceUsed[0]) 1 else 0
+        usedDice[4] = if (defendDiceUsed[1]) 1 else 0
+        outState.putIntArray("usedDice", usedDice)
+    }
+
+
+    fun resetDiceStates(state: Bundle) {
+        val usedDice: IntArray? = state.getIntArray("usedDice")
+        for (idx in (0..2)) {
+            attackDiceUsed[idx] = if (usedDice?.get(idx) == 1) true else false
+            if (attackDiceUsed[idx]) {
+                attackDice[idx]?.imageTintList = null
+            }
+            else {
+                attackDice[idx]?.imageTintList =  ColorStateList.valueOf(getResources().getColor(R.color.overlay))
+            }
+        }
+        for (idx in (0..1)) {
+            defendDiceUsed[idx] = if (usedDice?.get(idx+3) == 1) true else false
+            if (defendDiceUsed[idx]) {
+                defendDice[idx]?.imageTintList = null
+            }
+            else {
+                defendDice[idx]?.imageTintList =  ColorStateList.valueOf(getResources().getColor(R.color.overlay))
+            }
+        }
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         collectWidgets()
+        if (savedInstanceState != null) {
+            resetDiceStates(savedInstanceState)
+        }
         tts = TextToSpeech(this, this)
         for (i in 0..attackDice.size-1) {
             attackDice[i]?.setOnClickListener { diceClickHandler(i,attackDice, attackDiceUsed) }
@@ -122,7 +161,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         defendDice[0] = binding.imageViewDefend0
         defendDice[1] = binding.imageViewDefend1
         rollButton = binding.buttonRoll
-       // settingsButton = findViewById(R.id.image_view_settings)
     }
 
     override fun onInit(status: Int) {
